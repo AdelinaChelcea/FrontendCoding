@@ -3,6 +3,8 @@
 
     <div class="panel-body">
         <!--TODO #1 create the select element-->
+        <select ng-options="item.text for item in colors track by item.class" ng-model="selectedColor" ng-change="changeColor"></select>
+        <span ng-class="colorClass">Some text</span>
         <br>
         <!--TODO #4-->
     </div>
@@ -10,5 +12,10 @@
     <p>---------------------------</p>
 
     <!--TODO#8-->
+    <p>Filter by:<input type="text" name="filterText"></p>
+    <p>Order by:<input type="text" name="orderList"></p>
+
+
+   <div ng-repeat="color in colors | filter:filterText | orderBy:orderList">{{color.text}}</div>
 
 </div>

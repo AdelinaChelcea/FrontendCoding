@@ -29,11 +29,29 @@ hrApp.config(['$routeProvider',
                 templateUrl: 'views/demo/user.html',
                 controller: 'UserController'
             })
+            .when('/colors', {
+                templateUrl: 'views/demo/colors.html',
+                 controller: 'Colors'
+             })
+            .when('/forms', {
+                templateUrl: 'views/demo/form.html',
+                    controller: 'Form'
+            })
+            .when('/employeeadd', {
+                templateUrl: 'views/employeeadd.html',
+                    controller: 'EmployeeAddController'
+            })
+            .when('/employeeedit', {
+                templateUrl: 'views /employeeedit.html',
+                controller: 'EmployeeEditController'
+            })
+
             .otherwise({
                 templateUrl: 'views/main.html',
                 controller: 'MainController'
-            });
-    }])
+                });
+         }])
+
     .run(['$rootScope',
         function ($rootScope) {
 

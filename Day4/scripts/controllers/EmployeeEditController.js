@@ -6,6 +6,29 @@ hrApp.controller('EmployeeEditController', ['$scope', '$http', '$routeParams', '
 
         //TODO#HR5
 
+    $scope.managers = [];
+    $scope.departments = [];
+    $scope.jobs = [];
+    $scope.employee = [];
+
+    $http({url: $commonResourcesFactory.findAllEmployeesUrl, method: 'GET'}).
+            success(function (data, status, headers, config) {
+                $scope.managers = data;
+            });
+     $http({url: $commonResourcesFactory.findAllDepartmentsUrl, method: 'GET'}).
+            success(function (data, status, headers, config) {
+                $scope.departments = data;
+            });
+     $http({url: $commonResourcesFactory.findAllJobsUrl, method: 'GET'}).
+            success(function (data, status, headers, config) {
+                $scope.jobs = data;
+            });
+
+     $http({url: $commonResourcesFactory.findOneEmployeeUrl+$routeParams.employeeid, method: 'GET'}).
+        success(function (data) {
+            $scope.employee = data;
+        });
+
     /**
      * Reset form
      */
